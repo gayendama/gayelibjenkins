@@ -2,15 +2,17 @@ pipeline {
     agent any
 
     environment {
-       IMAGE_VERSION = "${env.BUILD_NUMBER}"  // Utilise le numéro de build Jenkins comme version de l'image
+        DOCKER_REPOSITORY = 'ndamagaye286'
+        IMAGE_VERSION = "${env.BUILD_NUMBER}"
     }
+
     stages {
-    stage('Build Docker image') {
+        stage('Build Docker image') {
             steps {
                 script {
                     buildDockerImage(env.DOCKER_REPOSITORY, env.IMAGE_VERSION)
                 }
             }
-            }
         }
+    }
 }
