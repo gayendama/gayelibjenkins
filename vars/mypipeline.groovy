@@ -1,12 +1,11 @@
-def call() {
-pipeline {
-    agent any
+def call(Map params = [:]) {
+    pipeline {
+        agent any
 
-    environment {
-        DOCKER_REPOSITORY = 'ndamagaye286'
-        IMAGE_VERSION = "${env.BUILD_NUMBER}"
-    }
-
+        environment {
+            IMAGE_VERSION = params.imageVersion ?: "${env.BUILD_NUMBER}"
+            DOCKER_REPOSITORY = params.dockerRepository ?: 'default/repository'
+        }
     stages {
         stage('Build Docker image') {
             steps {
