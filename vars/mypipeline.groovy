@@ -11,5 +11,6 @@ pipeline {
                     buildDockerImage(env.DOCKER_REPOSITORY, env.IMAGE_VERSION)
                 }
             }
+            }
         }
 }
