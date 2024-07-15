@@ -1,11 +1,11 @@
-def call(Map params = [:]) {
+def call(Map config) {
     pipeline {
         agent any
 
         environment {
-            IMAGE_VERSION = params.imageVersion ?: "${env.BUILD_NUMBER}"
-            DOCKER_REPOSITORY = params.dockerRepository ?: 'default/repository'
-        }
+        DOCKER_REPOSITORY = 'ndamagaye286'  // Remplacez par le nom de votre repository
+        IMAGE_VERSION = "${env.BUILD_NUMBER}"    // Utilise le numéro de build Jenkins comme version de l'image
+    }
     stages {
         stage('Build Docker image') {
             steps {
