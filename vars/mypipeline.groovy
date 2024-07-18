@@ -1,18 +1,17 @@
 #!/usr/bin/env groovy
 
 def call(Map config) {
+    def PROJET = config.PROJET ?: "Test House innovation"
+    def ID_DOCKER = config.ID_DOCKER ?: "ndamagaye268"
+    def IMAGE_NAME = config.IMAGE_NAME ?: "house-innovation"
+    def IMAGE_TAG = config.IMAGE_TAG ?: "latest"
+    def PortApp = config.PortApp ?: 80
+    def PortContainer = config.PortContainer ?: 8200
     pipeline {
         agent any
-
         environment {
-            repository = 'ndamagaye286'  // Remplacez par le nom de votre repository
-            version = "${env.BUILD_NUMBER}"    // Utilise le numéro de build Jenkins comme version de l'image
-            imageName = config.imageName ?: 'house-innovation'
-            portContainer = config.portContainer ?: '8200'
-            portApp = config.portApp ?: '80'
-            imageTag = config.imageTag ?: 'latest'
+            DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         }
-
         stages {
             stage('Build Docker image') {
                 steps {
