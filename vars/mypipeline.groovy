@@ -18,8 +18,8 @@ def call(Map config) {
                 }
             }
         }
-    }
-}
+    
+
     stages {
         stage('Test Acceptance') {
             steps {
@@ -37,4 +37,5 @@ def call(Map config) {
             }
         }
 }
+    }
 
