@@ -16,4 +16,21 @@ def call(Map config) {
         }
     }
 }
+    stages {
+        stage('Test Acceptance') {
+            steps {
+                script {
+                    testAcceptance()
+                }
+            }
+        }
+    }
+    stage('Scan Vulnérabilité Image') {
+            steps {
+                script {
+                    scanVulnerabilities()
+                }
+            }
+        }
 }
+
