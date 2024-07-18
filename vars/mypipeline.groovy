@@ -10,7 +10,7 @@ def call(Map config) {
             PortApp = config.portApp ?: 
             IMAGE_TAG = config.imageTag ?: 
         }
-    stages {
+        stages {
         stage('Build Docker image') {
             steps {
                 script {
@@ -28,13 +28,13 @@ def call(Map config) {
             }
         }
     
-    stage('Scan Vulnérabilité Image') {
+        stage('Scan Vulnérabilité Image') {
             steps {
                 script {
                     scanVulnerabilities()
                 }
             }
         }
+     }
 }
-    }
 
