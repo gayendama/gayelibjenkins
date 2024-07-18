@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def call(Map config) {
     pipeline {
         agent any
@@ -8,33 +10,33 @@ def call(Map config) {
             IMAGE_NAME = config.imageName ?: 
             PortContainer = config.portContainer ?: 
             PortApp = config.portApp ?: 
-            IMAGE_TAG = config.imageTag ?: 
+            IMAGE_TAG = config.imageTag ?:
         }
+
         stages {
-        stage('Build Docker image') {
-            steps {
-                script {
-                    buildDockerImage(env.DOCKER_REPOSITORY, env.IMAGE_VERSION)
+            stage('Build Docker image') {
+                steps {
+                    script {
+                        buildDockerImage(env.DOCKER_REPOSITORY, env.IMAGE_VERSION)
+                    }
                 }
             }
-        }
-    
 
-        stage('Test Acceptance') {
-            steps {
-                script {
-                    testAcceptance()
+            stage('Test Acceptance') {
+                steps {
+                    script {
+                        testAcceptance()
+                    }
+                }
+            }
+
+            stage('Scan Vulnérabilité Image') {
+                steps {
+                    script {
+                        scanVulnerabilities()
+                    }
                 }
             }
         }
-    
-        stage('Scan Vulnérabilité Image') {
-            steps {
-                script {
-                    scanVulnerabilities()
-                }
-            }
-        }
-     }
+    }
 }
-
