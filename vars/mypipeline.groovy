@@ -24,7 +24,7 @@ def call(Map config) {
             stage('Test Acceptance') {
                 steps {
                     script {
-                        testAcceptance(env.IMAGE_NAME, env.IMAGE_TAG, env.PortApp, env.PortContainer)
+                        testAcceptance("house-innovation", "latest", 8080, 80))
                     }
                 }
             }
