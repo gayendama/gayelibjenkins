@@ -20,7 +20,6 @@ def call(Map config) {
         }
     
 
-    stages {
         stage('Test Acceptance') {
             steps {
                 script {
@@ -28,7 +27,7 @@ def call(Map config) {
                 }
             }
         }
-    }
+    
     stage('Scan Vulnérabilité Image') {
             steps {
                 script {
