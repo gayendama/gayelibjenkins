@@ -7,10 +7,10 @@ def call(Map config) {
         environment {
             DOCKER_REPOSITORY = 'ndamagaye286'  // Remplacez par le nom de votre repository
             IMAGE_VERSION = "${env.BUILD_NUMBER}"    // Utilise le numéro de build Jenkins comme version de l'image
-            IMAGE_NAME = config.imageName ?: 
-            PortContainer = config.portContainer ?: 
-            PortApp = config.portApp ?: 
-            IMAGE_TAG = config.imageTag ?: 
+            imageName = config.imageName ?: "house-innovation"
+            portContainer = config.portContainer ?: "8200"
+            portApp = config.portApp ?: "80"
+            imageTag = config.imageTag ?: "latest
         }
 
         stages {
