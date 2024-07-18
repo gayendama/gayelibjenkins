@@ -5,8 +5,8 @@ def call(Map config) {
         agent any
 
         environment {
-            DOCKER_REPOSITORY = 'ndamagaye286'  // Remplacez par le nom de votre repository
-            IMAGE_VERSION = "${env.BUILD_NUMBER}"    // Utilise le numéro de build Jenkins comme version de l'image
+            repository = 'ndamagaye286'  // Remplacez par le nom de votre repository
+            version = "${env.BUILD_NUMBER}"    // Utilise le numéro de build Jenkins comme version de l'image
             imageName = config.imageName ?: "house-innovation"
             portContainer = config.portContainer ?: "8200"
             portApp = config.portApp ?: "80"
@@ -17,7 +17,7 @@ def call(Map config) {
             stage('Build Docker image') {
                 steps {
                     script {
-                        buildDockerImage(env.DOCKER_REPOSITORY, env.IMAGE_VERSION)
+                        buildDockerImage(env.repository, env.version)
                     }
                 }
             }
