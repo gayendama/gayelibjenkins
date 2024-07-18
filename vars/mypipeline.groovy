@@ -10,7 +10,7 @@ def call(Map config) {
             imageName = config.imageName ?: "house-innovation"
             portContainer = config.portContainer ?: "8200"
             portApp = config.portApp ?: "80"
-            imageTag = config.imageTag ?: "latest
+            imageTag = config.imageTag ?: "latest"
         }
 
         stages {
