@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def testAcceptance() {
+def  call() {
     // Démarrer le conteneur Docker
     sh "docker run --name ${IMAGE_NAME} -d -p ${PortContainer}:${PortApp} ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
 
