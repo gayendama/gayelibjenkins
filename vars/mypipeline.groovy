@@ -24,7 +24,7 @@ def call(Map config) {
             stage('Test Acceptance') {
                 steps {
                     script {
-                        testAcceptance("house-innovation", "latest", 8080, 80)
+                        testAcceptance("house-innovation", "latest", 8200, 80)
                     }
                 }
             }
