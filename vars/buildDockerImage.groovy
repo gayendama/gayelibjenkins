@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def call(String repository, String version) {
-    sh "docker build -t ${repository}:${version} ."
+def call(String IMAGE_NAME, String version) {
+    sh "docker build -t ${IMAGE_NAME}:${version} ."
 }
 
