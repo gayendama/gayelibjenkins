@@ -6,8 +6,5 @@ def  call(String IMAGE_NAME, String IMAGE_TAG, int PortContainer, int PortApp  )
 
     // Test d'acceptation avec cURL
     sh "curl localhost:${PortContainer} | grep -q 'Author: Roody95'"
-
-    // Arrêter et supprimer le conteneur Docker
-    sh "docker stop ${IMAGE_NAME}"
-    sh "docker rm ${IMAGE_NAME}"
+   
 }
