@@ -3,8 +3,8 @@
 def call(Map config) {
     def PROJET = config.PROJET ?: "Test House innovation"
     def ID_DOCKER = config.ID_DOCKER ?: "ndamagaye268"
-    def IMAGE_NAME = config.IMAGE_NAME ?: "house-innovation"
-    def IMAGE_TAG = config.IMAGE_TAG ?: "latest"
+    def imageName = config.IMAGE_NAME ?: "house-innovation"
+    def imageTag = config.IMAGE_TAG ?: "latest"
     def PortApp = config.PortApp ?: 80
     def PortContainer = config.PortContainer ?: 8200
     pipeline {
