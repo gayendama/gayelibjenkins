@@ -16,7 +16,7 @@ def call(Map config) {
             stage('Build Docker image') {
                 steps {
                     script {
-                        buildDockerImage(env.repository, env.version)
+                        buildDockerImage(env.imageName, env.imageTag)
                     }
                 }
             }
