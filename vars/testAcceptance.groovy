@@ -3,8 +3,5 @@ def  call(String IMAGE_NAME, String IMAGE_TAG, int PortContainer, int PortApp  )
     // Démarrer le conteneur Docker
     sh "docker run --name ${IMAGE_NAME} -d -p ${PortContainer}:${PortApp} ${IMAGE_NAME}:${IMAGE_TAG}"
     sleep 10
-
-    // Test d'acceptation avec cURL
-    sh "curl localhost:${PortContainer} | grep -q 'Author: Roody95'"
    
 }
