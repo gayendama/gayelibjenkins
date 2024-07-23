@@ -44,7 +44,7 @@ def call(Map config) {
             steps {
                 // Publier le rapport HTML généré par JMeter
                 publishHTML(target: [
-                    reportDir: "${RESULTS_DIR}/report",
+                    reportDir: "${RESULTS_DIR}/*",
                     reportFiles: 'index.html',
                     reportName: 'Rapport de Test JMeter'
                 ])
