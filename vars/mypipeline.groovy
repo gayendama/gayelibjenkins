@@ -32,7 +32,6 @@ def call(Map config) {
             steps {
                 script {
                     sh """
-                    mkdir -p /home/ndama/jmeter/apache-jmeter-5.6.3/jmeter-results
                     /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testlocal.jmx -l jmeter-results/results.jtl -e -o jmeter-results/report
                     """
                 }
