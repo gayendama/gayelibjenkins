@@ -54,6 +54,9 @@ def call(Map config) {
             steps {
                 // Nettoyer les répertoires temporaires
                 sh "rm -rf ${RESULTS_DIR}"
+                // Arrêter et supprimer le conteneur Docker
+                sh "docker stop house-innovation"
+                sh "docker rm house-innovation"
             }
         }
 
