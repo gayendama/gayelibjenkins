@@ -11,6 +11,8 @@ def call(Map config) {
         agent any
         environment {
             DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+            REPORT_DIR = "${RESULTS_DIR}/report"
+            RESULTS_DIR = 'jmeter-results'
         }
         stages {
             stage('Build Docker image') {
@@ -47,7 +49,13 @@ def call(Map config) {
                     reportName: 'Rapport de Test JMeter'
                 ])
             }
-        } 
+        }
+         stage('Cleanup') {
+            steps {
+                // Nettoyer les répertoires temporaires
+                sh "rm -rf ${RESULTS_DIR}"
+            }
+        }
 
             stage('Scan Vulnérabilité Image') {
                 steps {
