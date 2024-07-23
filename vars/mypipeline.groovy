@@ -47,8 +47,7 @@ def call(Map config) {
                     reportName: 'Rapport de Test JMeter'
                 ])
             }
-        }
-    }  
+        } 
 
             stage('Scan Vulnérabilité Image') {
                 steps {
