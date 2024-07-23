@@ -38,7 +38,17 @@ def call(Map config) {
                 }
             }
         }
-            
+         stage('Publish JMeter Report') {
+            steps {
+                // Publier le rapport HTML généré par JMeter
+                publishHTML(target: [
+                    reportDir: "jmeter-results/report",
+                    reportFiles: 'index.html',
+                    reportName: 'Rapport de Test JMeter'
+                ])
+            }
+        }
+    }  
 
             stage('Scan Vulnérabilité Image') {
                 steps {
