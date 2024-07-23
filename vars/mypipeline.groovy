@@ -11,8 +11,8 @@ def call(Map config) {
         agent any
         environment {
             DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+            RESULTS_DIR = '/var/lib/jenkins/workspace/pipeline/jmeter-results'
             REPORT_DIR = "${RESULTS_DIR}/report"
-            RESULTS_DIR = 'jmeter-results'
         }
         stages {
             stage('Build Docker image') {
@@ -44,7 +44,7 @@ def call(Map config) {
             steps {
                 // Publier le rapport HTML généré par JMeter
                 publishHTML(target: [
-                    reportDir: "jmeter-results/report",
+                    reportDir: "${RESULTS_DIR}/report",
                     reportFiles: 'index.html',
                     reportName: 'Rapport de Test JMeter'
                 ])
@@ -53,7 +53,7 @@ def call(Map config) {
          stage('Cleanup') {
             steps {
                 // Nettoyer les répertoires temporaires
-                sh "rm -rf ${RESULTS_DIR}"
+                sh "sudo rm -rf ${RESULTS_DIR}/report"
                 // Arrêter et supprimer le conteneur Docker
                 sh "docker stop house-innovation"
                 sh "docker rm house-innovation"
