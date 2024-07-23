@@ -32,7 +32,7 @@ def call(Map config) {
             steps {
                 script {
                     sh """
-                    /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testlocal.jmx -l jmeter-results/results.jtl -e -o jmeter-results/report
+                    sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testlocal.jmx -l jmeter-results/results.jtl -e -o jmeter-results/report
                     """
                 }
             }
