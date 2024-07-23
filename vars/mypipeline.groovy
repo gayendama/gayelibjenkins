@@ -44,7 +44,7 @@ def call(Map config) {
             steps {
                 // Publier le rapport HTML généré par JMeter
                 publishHTML(target: [
-                    reportDir:  "${RESULTS_DIR}/report" ,
+                    reportDir:  "${REPORT_DIR}",
                     reportFiles: 'index.html',
                     reportName: 'Rapport de Test JMeter'
                 ])
@@ -53,7 +53,7 @@ def call(Map config) {
          stage('Cleanup') {
             steps {
                 // Nettoyer les répertoires temporaires
-                sh "sudo rm -rf "${RESULTS_DIR}/*"
+                sh "sudo rm -rf ${RESULTS_DIR}/*"
                 // Arrêter et supprimer le conteneur Docker
                 sh "docker stop house-innovation"
                 sh "docker rm house-innovation"
