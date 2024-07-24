@@ -50,7 +50,7 @@ def call(Map config) {
                 ])
             }
         }
-         stage('Cleanup') {
+         /*stage('Cleanup') {
             steps {
                 // Nettoyer les répertoires temporaires
                 sh "sudo rm -rf ${RESULTS_DIR}/*"
@@ -59,7 +59,7 @@ def call(Map config) {
                 sh "docker rm house-innovation"
             }
         }
-
+*/
             stage('Scan Vulnérabilité Image') {
                 steps {
                     script {
