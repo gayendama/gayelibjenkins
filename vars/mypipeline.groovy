@@ -33,11 +33,8 @@ def call(Map config) {
             stage('Run JMeter Tests') {
             steps {
                 script {
-                    sh """
-                    sudo mkdir -p jmeter-result
-                    sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l jmeter-results/results.jtl 
-                    """
-                    perfReport 'jmeter-results/results.jtl'
+                    sh 'sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l results.jtl'
+                    perfReport 'results.jtl'
                 }
             }
         }
