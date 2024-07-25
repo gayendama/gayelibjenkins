@@ -37,7 +37,7 @@ def call(Map config) {
                     sudo mkdir -p jmeter-result
                     sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l jmeter-results/results.jtl 
                     """
-                    perfReport 'results.jtl'
+                    perfReport 'jmeter-results/results.jtl'
                 }
             }
         }
