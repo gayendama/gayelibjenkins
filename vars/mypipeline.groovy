@@ -38,39 +38,16 @@ def call(Map config) {
                     perfReport 'results.jtl'
                 }
             }
-        }
-
+        }            
             
-            /*stage('Run JMeter Tests') {
+         
+         stage('Cleanup') {
             steps {
-                script {
-                    sh """
-                    sudo mkdir -p jmeter-results                   
-                    sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l jmeter-results/results.jtl -e -o jmeter-results/report
-                    """
-                }
-            }
-        }*
-         stage('Publish JMeter Report') {
-            steps {
-                // Publier le rapport HTML généré par JMeter
-                publishHTML(target: [
-                    reportDir:  "${REPORT_DIR}",
-                    reportFiles: 'index.html',
-                    reportName: 'Rapport de Test JMeter'
-                ])
-            }
-        }
-         /*stage('Cleanup') {
-            steps {
-                // Nettoyer les répertoires temporaires
-                sh "sudo rm -rf ${RESULTS_DIR}/*"
                 // Arrêter et supprimer le conteneur Docker
                 sh "docker stop house-innovation"
                 sh "docker rm house-innovation"
             }
         }
-*/
             stage('Scan Vulnérabilité Image') {
                 steps {
                     script {
