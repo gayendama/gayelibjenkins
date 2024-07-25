@@ -34,12 +34,25 @@ def call(Map config) {
             steps {
                 script {
                     sh """
+                    sudo mkdir -p jmeter-result
+                    sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l jmeter-results/results.jtl 
+                    """
+                    perfReport 'results.jtl'
+                }
+            }
+        }
+
+            
+            /*stage('Run JMeter Tests') {
+            steps {
+                script {
+                    sh """
                     sudo mkdir -p jmeter-results                   
                     sudo /home/ndama/jmeter/apache-jmeter-5.6.3/bin/jmeter -n -t testPlan.jmx -l jmeter-results/results.jtl -e -o jmeter-results/report
                     """
                 }
             }
-        }
+        }*
          stage('Publish JMeter Report') {
             steps {
                 // Publier le rapport HTML généré par JMeter
